@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <link rel="stylesheet" href="css/bootstrap-theme.css"/>
+        <script src="js/angular.js"></script>
+        <script>
+            var myApp = angular.module("exampleApp", []);
+            myApp.controller("thu", function ($scope) {
+            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            $scope.thu = dayNames[new Date().getDay()];
+            });
+            myApp.controller("fri", function ($scope) {
+            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            $scope.fri = dayNames[(new Date().getDay() + 1) % 7];
+            });
+            myApp.controller("sat", function ($scope) {
+            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            $scope.sat = dayNames[(new Date().getDay() + 2) % 7];
+            });
+            myApp.controller("sun", function ($scope) {
+            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            $scope.sun = dayNames[(new Date().getDay() + 3) % 7];
+            });
+            myApp.controller("mon", function ($scope) {
+            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            $scope.mon = dayNames[(new Date().getDay() + 4) % 7];
+            });
+            myApp.controller("tue", function ($scope) {
+            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            $scope.tue = dayNames[(new Date().getDay() + 5) % 7];
+            });
+            myApp.controller("wed", function ($scope) {
+            var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            $scope.wed = dayNames[(new Date().getDay() + 6) % 7];
+            });
+            myApp.directive("highlight", function() {
+            return function (scope, element, attrs){
+            if (scope.thu == attrs["highlight"]){
+            element.css("color", "red");
+            element.css("font-weight", "bold");
+            } else if (scope.fri == attrs["highlight"]){
+            element.css("color", "green");
+            element.css("font-weight", "bold");
+            } else if (scope.sat == attrs["highlight"]){
+            element.css("color", "blue");
+            element.css("font-weight", "bold");
+            } else if (scope.sun == attrs["highlight"]){
+            element.css("color", "yellow");
+            element.css("font-weight", "bold");
+            } else if (scope.mon == attrs["highlight"]){
+            element.css("color", "lime");
+            element.css("font-weight", "bold");
+            } else if (scope.tue == attrs["highlight"]){
+            element.css("color", "black");
+            element.css("font-weight", "bold");
+            } else if (scope.wed == attrs["highlight"]){
+            element.css("color", "pink");
+            element.css("font-weight", "bold");
+            }
+            });
+        </script>
+    </head>
+    <body>
+        <div class="panel">
+            <div class="page-header">
+                <h3>AngularJS App</h3>
+            </div>
+            <h4 ng-controller="thu" highlight="Thursday">Today is {{thu|| "(Unknown)"}}</h4>
+            <h4 ng-controller="fri" highlight="Friday">Tomorrow is {{fri}}</h4>
+            <h4 ng-controller="sat" highlight="Saturday">Tomorrow is {{sat}}</h4>
+        </div>
+    </body>
+</html>
